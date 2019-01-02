@@ -3,4 +3,4 @@
 {% import_yaml "docker/osfamilymap.yaml" as osfamilymap %}
 
 {# merge OS-specific defaults #}
-{% set docker = salt['grains.filter_by']('osfamilymap', grain='os_family') %}
+{% set docker = salt['grains.filter_by'](osfamilymap, grain='os_family') %}
