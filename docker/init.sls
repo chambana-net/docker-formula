@@ -26,7 +26,7 @@ docker_packages:
     - pkgs:
       - {{ docker.package }}
 
-docker_service:
+docker:
   service.running:
     - name: docker
     - enable: true
