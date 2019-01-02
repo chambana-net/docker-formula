@@ -26,7 +26,7 @@ docker_packages:
   pkg.installed:
     - pkgs:
       - {{ docker.package }}
-      - python-docker
+      - {{ docker.python-package }}
 
 docker:
   service.running:
