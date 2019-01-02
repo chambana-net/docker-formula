@@ -3,7 +3,7 @@
 
 Arch:
     package: docker
-    python-package: python2-docker
+    python: python2-docker
 Debian:
     package: docker-ce
-    python-package: python-docker
+    python: python-docker
