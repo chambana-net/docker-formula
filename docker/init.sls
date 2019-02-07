@@ -10,6 +10,7 @@ docker_repo_packages:
     - pkgs:
       - apt-transport-https
       - ca-certificates
+      - python-pip
 
 sources_list_docker:
   pkgrepo.managed:
@@ -20,13 +21,26 @@ sources_list_docker:
     - key_url: https://download.docker.com/linux/debian/gpg
     - require:
       - pkg: docker_repo_packages
-{% endif %}
+
+docker_python:
+  pip.installed:
+    - name: docker
+    - require:
+      - pkg: docker_repo_packages
+
+docker_packages:
+  pkg.installed:
+    - pkgs:
+      - {{ docker.package }}
+
+{% else %}
 
 docker_packages:
   pkg.installed:
     - pkgs:
       - {{ docker.package }}
       - {{ docker.python }}
+{% endif %}
 
 docker:
   service.running:
